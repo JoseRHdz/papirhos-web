@@ -67,6 +67,16 @@ class Usuario extends Persona {
 		return $newPassword;
 	}
 
+/**
+ * Método estático que verifica que las credenciales de un usuario sean
+ * correctas para ingresar al sistema.
+ * @param $email el correo del usuario.
+ * @param $password la contraseña del usuario.
+ */
+	public function checkPassword($password) {
+		return password_verify($password, self::getPassword());
+	}
+
 
 
 /*******************************************************************************
@@ -129,7 +139,7 @@ class Usuario extends Persona {
  * @return email el correo eléctronico del usuario.
  */
 	public function getEmail () {
-		$sql = "SELECT email From $this->tableName WHERE id = '$this->idU'";
+		$sql = "SELECT email FROM $this->tableName WHERE id = '$this->idU'";
 		parent::selectRegister($sql);
 		return $this->result->email;
 	}
@@ -139,7 +149,7 @@ class Usuario extends Persona {
  * @return password la contraseña del usuario.
  */
 	private function getPassword () {
-		$sql = "SELECT password From $this->tableName WHERE id = '$this->idU'";
+		$sql = "SELECT password FROM $this->tableName WHERE id = '$this->idU'";
 		parent::selectRegister($sql);
 		return $this->result->password;
 	}
@@ -149,7 +159,7 @@ class Usuario extends Persona {
  * @return tipo tipo del usuario.
  */
 	public function getTipo () {
-		$sql = "SELECT tipo From $this->tableName WHERE id = '$this->idU'";
+		$sql = "SELECT tipo FROM $this->tableName WHERE id = '$this->idU'";
 		parent::selectRegister($sql);
 		return $this->result->tipo;
 	}
@@ -159,7 +169,7 @@ class Usuario extends Persona {
  * @return estatus el estatus del usuario.
  */
 	public function getEstatus () {
-		$sql = "SELECT estatus From $this->tableName WHERE id = '$this->idU'";
+		$sql = "SELECT estatus FROM $this->tableName WHERE id = '$this->idU'";
 		parent::selectRegister($sql);
 		return $this->result->estatus;
 	}

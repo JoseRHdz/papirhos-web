@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Clase Principal para las conexión, consultas y operaciones a la base de datos.
  * @author José Roberto Hernández Alvarez
@@ -20,7 +19,7 @@ class Master {
  * Método para hacer una conexión a la base dedatos.
  */
 	private function connect() {
-		$conf = require "../config.php";
+		$conf = require $_SERVER['DOCUMENT_ROOT']."/papirhos-web/config.php";
 		$this->conn = new mysqli($conf["db_host"],$conf["db_user"],$conf["db_pass"],
 														 $conf["db_name"]);
 
@@ -35,7 +34,7 @@ class Master {
  * Método estático para hacer una conexión a la base de datos.
  */
 	private static function connect1() {
-		$conf = require "../config.php";
+		$conf = require $_SERVER['DOCUMENT_ROOT']."/papirhos-web/config.php";
 		$this->conn = new mysqli($conf["db_host"],$conf["db_user"],$conf["db_pass"],
 														 $conf["db_name"]);
 
